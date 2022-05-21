@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { attachment } = require('express/lib/response');
 const { User } = require('../../models');
 
 router.get('/', (req, res) => {
@@ -48,6 +47,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   User.update(req.body, {
+    individualHooks: true,
     where: {
       id: req.params.id,
     },
